@@ -7,7 +7,7 @@ import { Container } from 'reactstrap';
 import { Row } from 'reactstrap';
 import { Col } from 'reactstrap';
 
-import myData from './vegan-main-foody.json'
+import smallRecipes from './vegan-main-foody.json'
 
 class App extends Component {
   renderSmallInfo(recipe) {
@@ -16,35 +16,38 @@ class App extends Component {
 
     return (
       <Row>
-        <Col xs="3"><img src={"https://spoonacular.com/recipeImages/" + imageUrl} width="100%" /></Col>
+        <Col xs="3"><a href={recipe.id}><img src={"https://spoonacular.com/recipeImages/" + imageUrl} width="100%" /></a></Col>
         <Col xs="auto">{title}</Col>
       </Row>
     )
   }
 
   render() {
-    let recept1 = myData.results[0];
-    let recept2 = myData.results[1];
+    let recept1 = smallRecipes.results[0];
+    let recept2 = smallRecipes.results[1];
+    let recept3 = smallRecipes.results[2];
+    let recept4 = smallRecipes.results[3];
+    let recept5 = smallRecipes.results[4];
+    let recept6 = smallRecipes.results[5];
+    let recept7 = smallRecipes.results[6];
+
 
     console.log(recept1)
 
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <h1>Foody</h1>
         </header>
 
         <Container>
           {this.renderSmallInfo(recept1)}
           {this.renderSmallInfo(recept2)}
+          {this.renderSmallInfo(recept3)}
+          {this.renderSmallInfo(recept4)}
+          {this.renderSmallInfo(recept5)}
+          {this.renderSmallInfo(recept6)}
+          {this.renderSmallInfo(recept7)}
         </Container>
       </div>
     );
