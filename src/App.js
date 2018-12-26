@@ -10,21 +10,23 @@ import { Col } from 'reactstrap';
 import myData from './vegan-main-foody.json'
 
 class App extends Component {
-  renderSmallInfo(imageUrl) {
+  renderSmallInfo(recipe) {
+    let imageUrl = recipe.image;
+    let title = recipe.title;
+
     return (
       <Row>
         <Col xs="3"><img src={"https://spoonacular.com/recipeImages/" + imageUrl} width="100%" /></Col>
-        <Col xs="auto">{myData.results[0].title}</Col>
+        <Col xs="auto">{title}</Col>
       </Row>
     )
   }
 
   render() {
     let recept1 = myData.results[0];
+    let recept2 = myData.results[1];
 
     console.log(recept1)
-
-    let imageUrl = recept1.image;
 
     return (
       <div className="App">
@@ -41,7 +43,8 @@ class App extends Component {
         </header>
 
         <Container>
-          {this.renderSmallInfo(imageUrl)}
+          {this.renderSmallInfo(recept1)}
+          {this.renderSmallInfo(recept2)}
         </Container>
       </div>
     );
