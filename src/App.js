@@ -13,23 +13,11 @@ import smallRecipes from './vegan-main-foody.json';
 
 class App extends Component {
   render() {
-    let recipe = smallRecipes.results[0];
 
-    let imageUrl = recipe.image;
-    let title = recipe.title;
 
     return (
       <Router>
         <div>
-          <Row>
-            <Col xs="3">
-              <Link to={"/recipes"}>
-                <img src={"https://spoonacular.com/recipeImages/" + imageUrl} width="100%" />
-              </Link>
-            </Col>
-            <Col xs="auto">{title}</Col>
-          </Row>
-
           <Route exact path="/" component={WeekMenu} />
           <Route path="/recipes" component={Recipes} />
         </div>
@@ -38,7 +26,8 @@ class App extends Component {
   }
 }
 
-function  WeekMenu(){
+class WeekMenu extends Component{
+  render() {
    let recept1 = smallRecipes.results[0];
     let recept2 = smallRecipes.results[1];
     let recept3 = smallRecipes.results[2];
@@ -49,13 +38,26 @@ function  WeekMenu(){
 
     console.log(recept1)
 
+    let recipe = smallRecipes.results[0];
+
+    let imageUrl = recipe.image;
+    let title = recipe.title;
+
     return (
       <div>
         <Container>
-          Hej!
+           <Row>
+            <Col xs="3">
+              <Link to={"/recipes"}>
+                <img src={"https://spoonacular.com/recipeImages/" + imageUrl} width="100%" />
+              </Link>
+            </Col>
+            <Col xs="auto">{title}</Col>
+          </Row>
         </Container>
       </div>
       );
+  }
   }
 
 function  Recipes(){
