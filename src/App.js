@@ -7,23 +7,39 @@ import { Container } from 'reactstrap';
 import { Row } from 'reactstrap';
 import { Col } from 'reactstrap';
 
-import smallRecipes from './vegan-main-foody.json'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import smallRecipes from './vegan-main-foody.json';
 
 class App extends Component {
-  renderSmallInfo(recipe) {
+  render() {
+    let recipe = smallRecipes.results[0];
+
     let imageUrl = recipe.image;
     let title = recipe.title;
 
     return (
-      <Row>
-        <Col xs="3"><a href={recipe.id}><img src={"https://spoonacular.com/recipeImages/" + imageUrl} width="100%" /></a></Col>
-        <Col xs="auto">{title}</Col>
-      </Row>
-    )
-  }
+      <Router>
+        <div>
+          <Row>
+            <Col xs="3">
+              <Link to={"/recipes"}>
+                <img src={"https://spoonacular.com/recipeImages/" + imageUrl} width="100%" />
+              </Link>
+            </Col>
+            <Col xs="auto">{title}</Col>
+          </Row>
 
-  render() {
-    let recept1 = smallRecipes.results[0];
+          <Route exact path="/" component={WeekMenu} />
+          <Route path="/recipes" component={Recipes} />
+        </div>
+      </Router>
+    );
+  }
+}
+
+function  WeekMenu(){
+   let recept1 = smallRecipes.results[0];
     let recept2 = smallRecipes.results[1];
     let recept3 = smallRecipes.results[2];
     let recept4 = smallRecipes.results[3];
@@ -31,27 +47,24 @@ class App extends Component {
     let recept6 = smallRecipes.results[5];
     let recept7 = smallRecipes.results[6];
 
-
     console.log(recept1)
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Foody</h1>
-        </header>
-
+      <div>
         <Container>
-          {this.renderSmallInfo(recept1)}
-          {this.renderSmallInfo(recept2)}
-          {this.renderSmallInfo(recept3)}
-          {this.renderSmallInfo(recept4)}
-          {this.renderSmallInfo(recept5)}
-          {this.renderSmallInfo(recept6)}
-          {this.renderSmallInfo(recept7)}
+          Hej!
         </Container>
       </div>
-    );
+      );
   }
-}
+
+function  Recipes(){
+    return (
+      <div>
+        <h1>THE NAME OF THE INCOMING RECIPIE</h1>
+      </div>
+
+      );
+  }
 
 export default App;
