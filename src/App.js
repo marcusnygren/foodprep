@@ -13,8 +13,6 @@ import smallRecipes from './vegan-main-foody.json';
 
 class App extends Component {
   render() {
-
-
     return (
       <Router>
         <div>
@@ -27,8 +25,24 @@ class App extends Component {
 }
 
 class WeekMenu extends Component{
+  viewSmallRecipes(recipe) {
+    let imageUrl = recipe.image;
+    let title = recipe.title;
+
+    return (
+      <Row>
+        <Col xs="3">
+          <Link to={"/recipes"}>
+            <img src={"https://spoonacular.com/recipeImages/" + imageUrl} width="100%" />
+          </Link>
+        </Col>
+        <Col xs="auto">{title}</Col>
+      </Row>
+    )
+  }
+
   render() {
-   let recept1 = smallRecipes.results[0];
+    let recept1 = smallRecipes.results[0];
     let recept2 = smallRecipes.results[1];
     let recept3 = smallRecipes.results[2];
     let recept4 = smallRecipes.results[3];
@@ -40,20 +54,16 @@ class WeekMenu extends Component{
 
     let recipe = smallRecipes.results[0];
 
-    let imageUrl = recipe.image;
-    let title = recipe.title;
-
     return (
       <div>
         <Container>
-           <Row>
-            <Col xs="3">
-              <Link to={"/recipes"}>
-                <img src={"https://spoonacular.com/recipeImages/" + imageUrl} width="100%" />
-              </Link>
-            </Col>
-            <Col xs="auto">{title}</Col>
-          </Row>
+          {this.viewSmallRecipes(recept1)}
+          {this.viewSmallRecipes(recept2)}
+          {this.viewSmallRecipes(recept3)}
+          {this.viewSmallRecipes(recept4)}
+          {this.viewSmallRecipes(recept5)}
+          {this.viewSmallRecipes(recept6)}
+          {this.viewSmallRecipes(recept7)}
         </Container>
       </div>
       );
