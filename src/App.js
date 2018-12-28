@@ -10,6 +10,7 @@ import { Col } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import smallRecipes from './vegan-main-foody.json';
+import fullRecipes from './vegan-main-foody-all-info-first5.json';
 
 class App extends Component {
   render() {
@@ -50,7 +51,7 @@ class WeekMenu extends Component{
     let recept6 = smallRecipes.results[5];
     let recept7 = smallRecipes.results[6];
 
-    console.log(recept1)
+
 
     let recipe = smallRecipes.results[0];
 
@@ -68,15 +69,34 @@ class WeekMenu extends Component{
       </div>
       );
   }
+}
+
+class Recipes extends Component {
+  showAllSteps(steps) {
+    console.log(steps[0]);
+
+    let numberOfSteps = steps.length;
+    let multipleSteps = [];
+
+    for (var i = 0; i < numberOfSteps; i++) {
+       multipleSteps[i] = <li key={steps[i].number}>{steps[i].step}</li>;
+    }
+
+    return multipleSteps;
   }
 
-function  Recipes(){
+  render(){
+    //console.log(fullRecipes[0])
+
+    let steps = fullRecipes[0].analyzedInstructions[0].steps;
+
     return (
       <div>
-        <h1>THE NAME OF THE INCOMING RECIPIE</h1>
+      <h1>{fullRecipes[0].title}</h1>
+      <ol>{this.showAllSteps(steps)}</ol>
       </div>
-
       );
   }
+}
 
 export default App;
