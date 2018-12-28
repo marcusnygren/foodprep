@@ -73,7 +73,7 @@ class WeekMenu extends Component{
 
 class Recipes extends Component {
   showAllSteps(steps) {
-    console.log(steps[0]);
+    console.log(fullRecipes[0]);
 
     let numberOfSteps = steps.length;
     let multipleSteps = [];
@@ -85,14 +85,33 @@ class Recipes extends Component {
     return multipleSteps;
   }
 
+  showAllIngredients(ingredients) {
+    //console.log(ingredients);
+
+    let numberOfIngredients = ingredients.length;
+    let multipleSteps = [];
+
+    for (var i = 0; i < numberOfIngredients; i++) {
+       multipleSteps[i] = <li key={ingredients[i].number}>{ingredients[i].original}</li>;
+    }
+
+    return multipleSteps;
+  }
+
   render(){
     //console.log(fullRecipes[0])
 
     let steps = fullRecipes[0].analyzedInstructions[0].steps;
+   let ingredients = fullRecipes[0].extendedIngredients;
 
     return (
       <div>
       <h1>{fullRecipes[0].title}</h1>
+      <p>{fullRecipes[0].nutrition.nutrients[0].amount} {fullRecipes[0].nutrition.nutrients[0].title} </p>
+      <img src={fullRecipes[0].image}/>
+      <h2>Ingredients</h2>
+     <ul>{this.showAllIngredients(ingredients)}</ul>
+     <h2>Instructions</h2>
       <ol>{this.showAllSteps(steps)}</ol>
       </div>
       );
