@@ -73,8 +73,6 @@ class WeekMenu extends Component{
 
 class Recipes extends Component {
   showAllSteps(steps) {
-    console.log(fullRecipes[0]);
-
     let numberOfSteps = steps.length;
     let multipleSteps = [];
 
@@ -86,13 +84,12 @@ class Recipes extends Component {
   }
 
   showAllIngredients(ingredients) {
-    //console.log(ingredients);
 
     let numberOfIngredients = ingredients.length;
     let multipleSteps = [];
 
     for (var i = 0; i < numberOfIngredients; i++) {
-       multipleSteps[i] = <li key={ingredients[i].number}>{ingredients[i].original}</li>;
+       multipleSteps[i] = <li key={ingredients[i].id}>{ingredients[i].original}</li>;
     }
 
     return multipleSteps;
@@ -111,7 +108,7 @@ class Recipes extends Component {
       <p>{fullRecipes[0].readyInMinutes} minutes</p>
       <p>{fullRecipes[0].nutrition.nutrients[0].amount} {fullRecipes[0].nutrition.nutrients[0].title} </p>
       <p>{fullRecipes[0].nutrition.nutrients[1].amount} {fullRecipes[0].nutrition.nutrients[1].unit} {fullRecipes[0].nutrition.nutrients[1].title}</p>
-      <p>{fullRecipes[0].nutrition.nutrients[4].amount} {fullRecipes[0].nutrition.nutrients[4].unit} {fullRecipes[0].nutrition.nutrients[4].title}</p>
+      <p>{fullRecipes[0].nutrition.nutrients[3].amount} {fullRecipes[0].nutrition.nutrients[3].unit} {fullRecipes[0].nutrition.nutrients[3].title}</p>
       <p>{fullRecipes[0].nutrition.nutrients[7].amount} {fullRecipes[0].nutrition.nutrients[7].unit} {fullRecipes[0].nutrition.nutrients[7].title}</p>
       <img src={fullRecipes[0].image}/>
       <h2>Ingredients</h2>
