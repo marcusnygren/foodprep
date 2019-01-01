@@ -10,6 +10,8 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
+import MenuAppBar from './MenuAppBar'
+
 import smallRecipes from './vegan-main-foody.json';
 import fullRecipes from './vegan-main-foody-all-info-first5.json';
 
@@ -57,13 +59,7 @@ class WeekMenu extends Component{
 
     return (
       <div>
-        <AppBar position="static" color="default">
-          <Toolbar>
-              <Typography variant="h6" color="inherit">
-              Foody
-              </Typography>
-          </Toolbar>
-        </AppBar>
+        <MenuAppBar />
 
         <h2>Monday</h2>
         {this.viewSmallRecipes(recept1)}
