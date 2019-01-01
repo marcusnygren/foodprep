@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-import 'bootstrap/dist/css/bootstrap.css';
-import { Container } from 'reactstrap';
-import { Row } from 'reactstrap';
-import { Col } from 'reactstrap';
-
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import smallRecipes from './vegan-main-foody.json';
@@ -31,14 +25,14 @@ class WeekMenu extends Component{
     let title = recipe.title;
 
     return (
-      <Row>
-        <Col xs="3">
+      <div>
+        <div>
           <Link to={"/recipes"}>
             <img src={"https://spoonacular.com/recipeImages/" + imageUrl} width="100%" />
           </Link>
-        </Col>
-        <Col xs="auto">{title}</Col>
-      </Row>
+        </div>
+        <div>{title}</div>
+      </div>
     )
   }
 
@@ -57,15 +51,13 @@ class WeekMenu extends Component{
 
     return (
       <div>
-        <Container>
-          {this.viewSmallRecipes(recept1)}
-          {this.viewSmallRecipes(recept2)}
-          {this.viewSmallRecipes(recept3)}
-          {this.viewSmallRecipes(recept4)}
-          {this.viewSmallRecipes(recept5)}
-          {this.viewSmallRecipes(recept6)}
-          {this.viewSmallRecipes(recept7)}
-        </Container>
+        {this.viewSmallRecipes(recept1)}
+        {this.viewSmallRecipes(recept2)}
+        {this.viewSmallRecipes(recept3)}
+        {this.viewSmallRecipes(recept4)}
+        {this.viewSmallRecipes(recept5)}
+        {this.viewSmallRecipes(recept6)}
+        {this.viewSmallRecipes(recept7)}
       </div>
       );
   }
