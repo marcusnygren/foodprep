@@ -3,18 +3,28 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+
 import smallRecipes from './vegan-main-foody.json';
 import fullRecipes from './vegan-main-foody-all-info-first5.json';
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div>
-          <Route exact path="/" component={WeekMenu} />
-          <Route path="/recipes" component={Recipes} />
-        </div>
-      </Router>
+      <React.Fragment>
+        <CssBaseline />
+          <Router>
+            <div>
+              <Route exact path="/" component={WeekMenu} />
+              <Route path="/recipes" component={Recipes} />
+            </div>
+          </Router>
+        </React.Fragment>
     );
   }
 }
@@ -45,18 +55,29 @@ class WeekMenu extends Component{
     let recept6 = smallRecipes.results[5];
     let recept7 = smallRecipes.results[6];
 
-
-
-    let recipe = smallRecipes.results[0];
-
     return (
       <div>
+        <AppBar position="static" color="default">
+          <Toolbar>
+              <Typography variant="h6" color="inherit">
+              Foody
+              </Typography>
+          </Toolbar>
+        </AppBar>
+
+        <h2>Monday</h2>
         {this.viewSmallRecipes(recept1)}
+        <h2>Tuesday</h2>
         {this.viewSmallRecipes(recept2)}
+        <h2>Wednesday</h2>
         {this.viewSmallRecipes(recept3)}
+        <h2>Thursday</h2>
         {this.viewSmallRecipes(recept4)}
+        <h2>Friday</h2>
         {this.viewSmallRecipes(recept5)}
+        <h2>Saturday</h2>
         {this.viewSmallRecipes(recept6)}
+        <h2>Sunday</h2>
         {this.viewSmallRecipes(recept7)}
       </div>
       );
