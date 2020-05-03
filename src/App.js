@@ -49,13 +49,26 @@ class WeekMenu extends Component{
   }
 
   render() {
-    let recept1 = smallRecipes.results[0];
-    let recept2 = smallRecipes.results[1];
-    let recept3 = smallRecipes.results[2];
-    let recept4 = smallRecipes.results[3];
-    let recept5 = smallRecipes.results[4];
-    let recept6 = smallRecipes.results[5];
-    let recept7 = smallRecipes.results[6];
+    let numberOfRecipes = smallRecipes.results.length;
+    console.log("numberOfRecipes: " + numberOfRecipes)
+
+    let randomNumber = Math.floor(Math.random() * numberOfRecipes);
+    console.log("randomNumber: " + randomNumber)
+
+    var randomNumbers = [];
+    while(randomNumbers.length < 8){
+        var r = Math.floor(Math.random() * 100) + 1;
+        if(randomNumbers.indexOf(r) === -1) randomNumbers.push(r);
+    }
+    console.log(randomNumbers);
+
+    let recept1 = smallRecipes.results[randomNumbers[0]]; //.results[0];
+    let recept2 = smallRecipes.results[randomNumbers[1]];
+    let recept3 = smallRecipes.results[randomNumbers[2]];
+    let recept4 = smallRecipes.results[randomNumbers[3]];
+    let recept5 = smallRecipes.results[randomNumbers[4]];
+    let recept6 = smallRecipes.results[randomNumbers[5]];
+    let recept7 = smallRecipes.results[randomNumbers[6]];
 
     return (
       <div>
